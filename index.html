@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Figure CDM Mapping — Logical Data Dictionary</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --accent: #6366f1;
+      --accent-dim: #3730a3;
+      --text: #e2e8f0;
+      --text-muted: #64748b;
+      --tag-heloc: #0e7490;
+      --tag-cdm: #065f46;
+      --tag-pending: #92400e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left { display: flex; flex-direction: column; gap: 4px; }
+    .header-title { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+    .header-sub { font-size: 12px; color: var(--text-muted); }
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .badge-building { background: var(--accent-dim); color: #a5b4fc; }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 32px;
+      gap: 40px;
+    }
+    .hero { text-align: center; max-width: 580px; }
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .systems {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .system-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 28px;
+      text-align: center;
+      min-width: 180px;
+    }
+    .system-card .label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+    .system-card .name { font-size: 16px; font-weight: 700; }
+    .system-card .desc { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+    .source .label { color: #67e8f9; }
+    .dest .label { color: #6ee7b7; }
+    .arrow { font-size: 28px; color: var(--text-muted); }
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      width: 100%;
+      max-width: 640px;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat .num {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .stat .lbl { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+    .pending-note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 640px;
+      width: 100%;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="header-title">Figure CDM Mapping</div>
+      <div class="header-sub">Figure Connect HELOC → Carrington CDM / Encompass LOS</div>
+    </div>
+    <span class="badge badge-building">In Build</span>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Logical Data Dictionary</h1>
+      <p>Field-level mapping between Figure Connect (HELOC portal) and the Carrington Common Data Model SQL database — the source of truth backend linked to Encompass LOS.</p>
+    </div>
+
+    <div class="systems">
+      <div class="system-card source">
+        <div class="label">Source</div>
+        <div class="name">Figure Connect</div>
+        <div class="desc">HELOC Portal / UI</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="system-card dest">
+        <div class="label">Destination</div>
+        <div class="name">Carrington CDM</div>
+        <div class="desc">SQL DB / Encompass LOS</div>
+      </div>
+    </div>
+
+    <div class="status-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Figure Fields</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">CDM Fields</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Mapped Pairs</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Pending Review</div></div>
+    </div>
+
+    <div class="pending-note">
+      Schema intake in progress. Figure Connect field documentation and Carrington CDM DDL pending collection. LDD table will populate as mapping sessions run.
+    </div>
+  </main>
+
+  <footer>Figure CDM Mapping — Carrington Mortgage Holdings &nbsp;·&nbsp; Built with Claude Code</footer>
+</body>
+</html>

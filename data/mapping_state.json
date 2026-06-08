@@ -1,0 +1,17 @@
+{
+  "project": "figure-cdm-mapping",
+  "source_system": "Figure Connect",
+  "source_type": "HELOC Portal",
+  "destination_system": "Carrington CDM",
+  "destination_type": "SQL DB / Encompass LOS",
+  "last_updated": "2026-06-08",
+  "summary": {
+    "figure_fields": 0,
+    "cdm_fields": 0,
+    "mapped_pairs": 0,
+    "unmapped": 0,
+    "needs_review": 0
+  },
+  "modules": [],
+  "mappings": []
+}
