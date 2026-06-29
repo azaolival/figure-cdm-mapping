@@ -1,17 +1,45 @@
 {
   "project": "figure-cdm-mapping",
   "source_system": "Figure Connect",
-  "source_type": "HELOC Portal",
+  "source_type": "HELOC Portal — 14 SFTP CSV schemas",
   "destination_system": "Carrington CDM",
-  "destination_type": "SQL DB / Encompass LOS",
-  "last_updated": "2026-06-08",
+  "destination_type": "SQL DB / Encompass LOS (CDM database confirmed via Callidus SQL)",
+  "last_updated": "2026-06-29",
   "summary": {
-    "figure_fields": 0,
-    "cdm_fields": 0,
-    "mapped_pairs": 0,
-    "unmapped": 0,
-    "needs_review": 0
+    "cmh_source_fields": 188,
+    "figure_schemas_ingested": 14,
+    "output_rows": 242,
+    "mapped": 162,
+    "out_of_scope": 65,
+    "no_figure_match": 15,
+    "schema_pending": 242
   },
-  "modules": [],
+  "tabs": [
+    {
+      "name": "Bank United_Warehouse",
+      "input_rows": 91,
+      "output_rows": 123,
+      "mapped": 95,
+      "out_of_scope": 16,
+      "no_figure_match": 12,
+      "cdm_schema_status": "TBD — V3 pending Bank United SQL"
+    },
+    {
+      "name": "Callidus_LO-Comp",
+      "input_rows": 97,
+      "output_rows": 119,
+      "mapped": 67,
+      "out_of_scope": 49,
+      "no_figure_match": 3,
+      "cdm_schema_status": "CDM confirmed — dbo.v* views mapped from Callidus.pGetEncompassData V76"
+    }
+  ],
+  "blockers": [
+    "Bank United SQL schema (same format as Callidus SQL) — needed for V3 CDM_View/CDM_Column on Bank United tab",
+    "Confirmed CMH destination schema/table name — resolves Schema_Pending=Yes on all 242 rows"
+  ],
+  "output_file": "data/output/CMH_Figure_Mapping_Output_20260629_v2.xlsx",
+  "script": "scripts/figure_mapping_v2.py",
+  "version": "v2",
   "mappings": []
 }
